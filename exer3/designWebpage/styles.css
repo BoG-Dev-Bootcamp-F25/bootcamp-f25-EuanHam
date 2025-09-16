@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: rgb(98, 237, 237);
+    padding: 20px 20px;
+    background-color: rgb(0, 67, 183);
 }
 
 .nav-right {
@@ -14,41 +14,65 @@
 .nav-links {
     display: flex;
     gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
 }
 
 .page-footer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+.page-footer hr {
+    width: 100%;
+    margin: 0 0 10px 0;
 }
 
 .pfp {
-    padding-left: 20px;
-    height: 20px;
+    height: 30px;
+    width: 30px;
+    padding: 2px;
+    border-radius: 50%;
+    border: 3px solid white;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    min-height: 90vh;
+    min-height: 95vh;
 }
 
 .search-bar {
     flex: 1;
+    gap: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .search-input {
+    font-size: large;
     background-color: gray;
-    padding: 5px 25px;
+    padding: 15px 60px;
     border-radius: 30px;
     border: 2px solid black;
 }
 
 .search-btn {
+    font-size: large;
     background-color: gray;
-    padding: 5px 25px;
+    padding: 15px 60px;
     border-radius: 30px;
     border: 2px solid black;
 }
+
+.search-btn:hover {
+    background-color: blue;
+    color: white
+}
+
