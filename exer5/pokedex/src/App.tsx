@@ -1,17 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import PokemonImage from './components/PokemonImage';
+import NavigationButtons from './components/NavigationButtons';
+import PokemonInfo from './components/PokemonInfo';
 
 function App() {
   return (
     <>
       <h1>Exercise 5 - Pokedex!</h1>
-      <div className="pokedex">
+      <div className="container">
         <div className="column">
           <p>this is the left bruh</p>
+          <PokemonImage />
+          <NavigationButtons />
         </div>
         <div className="column">
-          <p>this is the right</p>
+          <PokemonInfo />
         </div>
       </div>
     </>
