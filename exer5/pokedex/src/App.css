@@ -1,9 +1,15 @@
 
 
+h1 {
+  text-align: center;
+}
+
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   gap: 20px;
+  width: 30vw;
+  margin: 0 auto;
 }
 
 .column {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getPokemonJSON } from '../server/pokemon';
+import './PokemonInfo.css';
 
 function PokemonInfo() {
   const [activeTab, setActiveTab] = useState<'info' | 'moves'>('info');
@@ -31,17 +32,21 @@ function PokemonInfo() {
 
   if (!pokemonData) {
     return (
-      <div>
+        <div>
         <p>Error loading Pokemon info</p>
-      </div>
+        </div>
     );
   }
 
   const renderInfo = () => (
     <div>
-      <p><strong>Height:</strong> {pokemonData.height / 10} m</p>
-      <p><strong>Weight:</strong> {pokemonData.weight / 10} kg</p>
-      <p><strong>HP:</strong> {pokemonData.stats[0].base_stat}</p>
+        <p>height: {pokemonData.height / 10}m</p>
+        <p>weight: {pokemonData.weight / 10}kg</p>
+        <p>hp: {pokemonData.stats[0].base_stat}</p>
+        <p>attack: {pokemonData.stats[1].base_stat}</p>
+        <p>special-attack: {pokemonData.stats[3].base_stat}</p>
+        <p>special-defense: {pokemonData.stats[4].base_stat}</p>
+        <p>speed: {pokemonData.stats[5].base_stat}</p>
     </div>
   );
 
@@ -56,22 +61,29 @@ function PokemonInfo() {
 
   return (
     <div>
+              
+      <div className="content-area">
+        {activeTab === 'info' ? renderInfo() : renderMoves()}
+      </div>
       <div className="container">
-        <div className="column">
-          <button onClick={() => setActiveTab('info')}>
+        <div className="column columnButton-container">
+          <button 
+            onClick={() => setActiveTab('info')}
+            className={`tab-button ${activeTab === 'info' ? 'active' : ''}`}
+          >
             Info
           </button>
         </div>
-        <div className="column">
-          <button onClick={() => setActiveTab('moves')}>
+        <div className="column columnButton-container">
+          <button 
+            onClick={() => setActiveTab('moves')}
+            className={`tab-button ${activeTab === 'moves' ? 'active' : ''}`}
+          >
             Moves
           </button>
         </div>
       </div>
-      
-      <div style={{ marginTop: '20px' }}>
-        {activeTab === 'info' ? renderInfo() : renderMoves()}
-      </div>
+
     </div>
   );
 }

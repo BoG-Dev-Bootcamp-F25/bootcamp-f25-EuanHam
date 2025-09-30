@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getPokemonJSON } from '../server/pokemon';
+import './PokemonImage.css';
 
 function PokemonImage() {
   const [pokemonData, setPokemonData] = useState<any>(null);
@@ -27,13 +28,13 @@ function PokemonImage() {
       </div>
     );
   }
-  
+
   return (
     <div>
       <img 
         src={pokemonData.sprites.front_default} 
         alt={pokemonData.name}
-        style={{ width: '200px', height: '200px' }}
+        className="pokemon-image"
       />
       <p>{pokemonData.name}</p>
       <p>Type(s): {pokemonData.types.map((type: any) => type.type.name)}</p>
