@@ -1,3 +1,10 @@
+.pokemon-info-container h2 {
+  margin: 0 0 20px 0;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
 .tab-button {
   background-color: #f0f0f0;
   color: black;
@@ -5,7 +12,9 @@
   border-radius: 7px;
   padding: 10px 20px;
   cursor: pointer;
-  margin-right: 10px;
+  margin: 0 5px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .tab-button.active {
@@ -13,16 +22,18 @@
   color: rgb(0, 0, 0);
 }
 
-.content-area {
+.tab-buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
   margin-top: 20px;
+}
+
+.content-area {
   height: 40vh;
   background-color: #f0f0f0;
   padding: 15px;
   overflow: auto;
-}
-
-.columnButton-container {
-    display: flex;
-    justify-content: center;
-    border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }

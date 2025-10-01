@@ -1,26 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { getPokemonJSON } from '../server/pokemon';
+import React, { useState } from 'react';
 import './PokemonInfo.css';
 
-function PokemonInfo() {
+interface PokemonInfoProps {
+  pokemonData: any;
+  loading: boolean;
+}
+
+function PokemonInfo({ pokemonData, loading }: PokemonInfoProps) {
   const [activeTab, setActiveTab] = useState<'info' | 'moves'>('info');
-  const [pokemonData, setPokemonData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPokemon = async () => {
-      try {
-        const data = await getPokemonJSON(1); // Start with Bulbasaur
-        setPokemonData(data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching Pokemon:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchPokemon();
-  }, []);
 
   if (loading) {
     return (
@@ -32,27 +19,27 @@ function PokemonInfo() {
 
   if (!pokemonData) {
     return (
-        <div>
+      <div>
         <p>Error loading Pokemon info</p>
-        </div>
+      </div>
     );
   }
 
   const renderInfo = () => (
     <div>
-        <p>height: {pokemonData.height / 10}m</p>
-        <p>weight: {pokemonData.weight / 10}kg</p>
-        <p>hp: {pokemonData.stats[0].base_stat}</p>
-        <p>attack: {pokemonData.stats[1].base_stat}</p>
-        <p>special-attack: {pokemonData.stats[3].base_stat}</p>
-        <p>special-defense: {pokemonData.stats[4].base_stat}</p>
-        <p>speed: {pokemonData.stats[5].base_stat}</p>
+      <p>height: {pokemonData.height / 10}m</p>
+      <p>weight: {pokemonData.weight / 10}kg</p>
+      <p>hp: {pokemonData.stats[0].base_stat}</p>
+      <p>attack: {pokemonData.stats[1].base_stat}</p>
+      <p>defense: {pokemonData.stats[2].base_stat}</p>
+      <p>special-attack: {pokemonData.stats[3].base_stat}</p>
+      <p>special-defense: {pokemonData.stats[4].base_stat}</p>
+      <p>speed: {pokemonData.stats[5].base_stat}</p>
     </div>
   );
 
   const renderMoves = () => (
     <div>
-      <p><strong>Moves:</strong></p>
       {pokemonData.moves.map((move: any, index: number) => (
         <p key={index}> {move.move.name}</p>
       ))}
@@ -60,30 +47,27 @@ function PokemonInfo() {
   );
 
   return (
-    <div>
-              
+    <div className="pokemon-info-container">
+      <h2>{activeTab === 'info' ? 'Info' : 'Moves'}</h2>
+      
       <div className="content-area">
         {activeTab === 'info' ? renderInfo() : renderMoves()}
       </div>
-      <div className="container">
-        <div className="column columnButton-container">
-          <button 
-            onClick={() => setActiveTab('info')}
-            className={`tab-button ${activeTab === 'info' ? 'active' : ''}`}
-          >
-            Info
-          </button>
-        </div>
-        <div className="column columnButton-container">
-          <button 
-            onClick={() => setActiveTab('moves')}
-            className={`tab-button ${activeTab === 'moves' ? 'active' : ''}`}
-          >
-            Moves
-          </button>
-        </div>
+      
+      <div className="tab-buttons-container">
+        <button 
+          onClick={() => setActiveTab('info')}
+          className={`tab-button ${activeTab === 'info' ? 'active' : ''}`}
+        >
+          Info
+        </button>
+        <button 
+          onClick={() => setActiveTab('moves')}
+          className={`tab-button ${activeTab === 'moves' ? 'active' : ''}`}
+        >
+          Moves
+        </button>
       </div>
-
     </div>
   );
 }
