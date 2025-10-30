@@ -5,11 +5,13 @@ const Schema = mongoose.Schema;
 
 // can have multiple tickets
 const userSchema = new Schema ({
-    tickets: [{
-        type: Schema.Types.ObjectId,
-        ref: "Ticket",
-        default: []
-    }]
+    name: {
+        type: String,
+        required: true
+    },
+    age: {
+        type: Number
+    }
 });
 
 export default mongoose.models?.User || mongoose.model("user", userSchema);

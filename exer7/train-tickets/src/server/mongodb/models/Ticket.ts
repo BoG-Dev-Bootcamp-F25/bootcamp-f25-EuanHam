@@ -4,22 +4,20 @@ import User from "../models/User";
 const Schema = mongoose.Schema;
 
 const ticketSchema = new Schema ({
-    train: {
+    lineColor: {
         type: String,
         required: true
-    }, 
-    price: {
-        type: Number,
+    },
+    station: {
+        type: String,
         required: true
     },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-    user: {
-        type: User,
+    userID: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
         required: true
     }
 });
+
 
 export default mongoose.models?.Ticket || mongoose.model("ticket", ticketSchema);
