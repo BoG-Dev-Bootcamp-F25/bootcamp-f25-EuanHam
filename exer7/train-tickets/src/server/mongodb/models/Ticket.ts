@@ -13,11 +13,11 @@ const ticketSchema = new Schema ({
         required: true
     },
     userID: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
     }
 });
 
 
-export default mongoose.models?.Ticket || mongoose.model("ticket", ticketSchema);
+export default mongoose.models?.Ticket || mongoose.model("Ticket", ticketSchema);

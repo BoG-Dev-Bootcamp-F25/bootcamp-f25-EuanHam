@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import Ticket from "../models/Ticket";
 
 const Schema = mongoose.Schema;
 
@@ -13,4 +12,4 @@ const userSchema = new Schema ({
     }
 });
 
-export default mongoose.models?.User || mongoose.model("user", userSchema);
+export default mongoose.models?.User || mongoose.model("User", userSchema);
