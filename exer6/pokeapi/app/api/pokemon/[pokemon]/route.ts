@@ -25,7 +25,7 @@ export const GET = async (
             type: pokemonData.types.map((type: any) => type.type.name)
         }, { status: 200 });
     } catch (error) {
-        console.error('Error fetching pokemon:', error);
+        console.error('Error:', error);
         return Response.json({ 
             error: "Internal Server Error" 
         }, { status: 500 });
