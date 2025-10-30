@@ -1,6 +1,9 @@
 import User from '../models/User'
 
-async function createUser(userData) {
-    const newUser = new User(userData);
+async function createUser(
+    name: string,
+    age: number
+) {
+    const newUser = new User(name, age);
     await newUser.save();
 }

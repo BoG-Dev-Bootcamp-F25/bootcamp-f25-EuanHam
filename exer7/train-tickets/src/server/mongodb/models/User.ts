@@ -3,7 +3,6 @@ import Ticket from "../models/Ticket";
 
 const Schema = mongoose.Schema;
 
-// can have multiple tickets
 const userSchema = new Schema ({
     name: {
         type: String,
