@@ -15,14 +15,13 @@ async function updateTicketByUser(
 
   try {
     await connectDB();
-    const updated = await Ticket.findByIdAndUpdate(
-      ticketID,
-      { userID },
-      { new: true }
-    ).exec();
+    console.log("Updating ticket");
+    const updated = await Ticket.findByIdAndUpdate(ticketID, { userID });
 
+    console.log("Updated result");
     return updated ? true : false;
   } catch (error: any) {
+    console.log("Error");
     return false;
   }
 }
